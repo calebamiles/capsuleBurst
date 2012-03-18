@@ -9,56 +9,44 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       volScalarField;
-    object      nuSgs;
+    class       polyBoundaryMesh;
+    location    "constant/polyMesh";
+    object      boundary;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 2 -1 0 0 0 0];
-
-internalField   uniform 0.0544766;
-
-boundaryField
-{
-    inlet
+5
+(
+    capsuleWall
     {
-        type            fixedValue;
-        value           uniform 0.0544766;
+        type            wall;
+        nFaces          20;
+        startFace       20580;
     }
-
-    outlet
+    left
     {
-        type            inletOutlet;
-        inletValue      uniform 0.0544766;
-        value           uniform 0.0544766;
+        type            wall;
+        nFaces          60;
+        startFace       20600;
     }
-
+    right
+    {
+        type            wall;
+        nFaces          80;
+        startFace       20660;
+    }
+    topAndBottom
+    {
+        type            wall;
+        nFaces          280;
+        startFace       20740;
+    }
     frontAndBack
     {
-        type           symmetryPlane;
+        type            empty;
+        nFaces          20800;
+        startFace       21020;
     }
-
-    lowerWall
-    {
-        type            nuSgsUSpaldingWallFunction;
-        value           uniform 0.0544766;
-    }
-
-    upperWall
-    {
-        type           symmetryPlane;
-    }
-
-    "motorBike_.*"
-    {
-        type            nuSgsUSpaldingWallFunction;
-        value           uniform 0.0544766;
-    }
-
-    "proc.*"
-    {
-        type            processor;
-    }
-}
+)
 
 // ************************************************************************* //

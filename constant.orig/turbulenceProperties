@@ -9,49 +9,13 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       volScalarField;
-    location    "0";
-    object      k;
+    class       dictionary;
+    location    "constant";
+    object      turbulenceProperties;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [ 0 2 -2 0 0 0 0 ];
-
-internalField   uniform 0.24;
-
-boundaryField
-{
-   left
-    {
-        type            fixedValue;
-        value           uniform 0.24;
-    }
-    
-    right
-    {
-        type            inletOutlet;
-        inletValue      uniform 0.24;
-        value           uniform 0.24;
-    }
-    
-    topAndBottom
-    {
-        type            kqRWallFunction;
-        value           uniform 0.24;
-    }
-    
-    capsuleWall
-    {
-        type            kqRWallFunction;
-        value           uniform 0.24;
-    }
-   
-    
-    frontAndBack
-    {
-        type            empty;
-    }
-}
+simulationType  LESModel;
 
 
 // ************************************************************************* //

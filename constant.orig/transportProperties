@@ -9,48 +9,30 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       volScalarField;
-    location    "0";
-    object      nut;
+    class       dictionary;
+    location    "constant";
+    object      transportProperties;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [ 0 2 -1 0 0 0 0 ];
+transportModel  Newtonian;
 
-internalField   uniform 0;
+nu              nu [ 0 2 -1 0 0 0 0 ] 1e-05;
 
-boundaryField
+CrossPowerLawCoeffs
 {
+    nu0             nu0 [ 0 2 -1 0 0 0 0 ] 1e-06;
+    nuInf           nuInf [ 0 2 -1 0 0 0 0 ] 1e-06;
+    m               m [ 0 0 1 0 0 0 0 ] 1;
+    n               n [ 0 0 0 0 0 0 0 ] 1;
+}
 
-    left
-    {
-        type            calculated;
-        value           uniform 0;
-    }
-    
-    right
-    {
-        type            calculated;
-        value           uniform 0;
-    }
-    
-    topAndBottom
-    {
-        type            nutUSpaldingWallFunction;
-        value           uniform 0;
-    }
-    
-
-    capsuleWall
-    {
-        type            nutUSpaldingWallFunction;
-        value           uniform 0;
-    }
-    
-    frontAndBack
-    {
-        type            empty;
-    }
+BirdCarreauCoeffs
+{
+    nu0             nu0 [ 0 2 -1 0 0 0 0 ] 1e-06;
+    nuInf           nuInf [ 0 2 -1 0 0 0 0 ] 1e-06;
+    k               k [ 0 0 1 0 0 0 0 ] 0;
+    n               n [ 0 0 0 0 0 0 0 ] 1;
 }
 
 

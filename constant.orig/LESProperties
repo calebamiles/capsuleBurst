@@ -15,28 +15,72 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-LESModel        Smagorinsky;
+LESModel        oneEqEddy;
 
-delta           Prandtl;
+delta           cubeRootVol;
 
 printCoeffs     on;
 
+cubeRootVolCoeffs
+{
+    deltaCoeff      1;
+}
+
 PrandtlCoeffs
 {
-
-    delta         cubeRootVol;
-  
+    delta           cubeRootVol;
     cubeRootVolCoeffs
     {
         deltaCoeff      1;
     }
-    
 
-    //Cdelta          0.158;
+    smoothCoeffs
+    {
+        delta           cubeRootVol;
+        cubeRootVolCoeffs
+        {
+            deltaCoeff      1;
+        }
 
+        maxDeltaRatio   1.1;
+    }
+
+    Cdelta          0.158;
 }
 
+vanDriestCoeffs
+{
+    delta           cubeRootVol;
+    cubeRootVolCoeffs
+    {
+        deltaCoeff      1;
+    }
 
+    smoothCoeffs
+    {
+        delta           cubeRootVol;
+        cubeRootVolCoeffs
+        {
+            deltaCoeff      1;
+        }
+
+        maxDeltaRatio   1.1;
+    }
+
+    Aplus           26;
+    Cdelta          0.158;
+}
+
+smoothCoeffs
+{
+    delta           cubeRootVol;
+    cubeRootVolCoeffs
+    {
+        deltaCoeff      1;
+    }
+
+    maxDeltaRatio   1.1;
+}
 
 
 // ************************************************************************* //

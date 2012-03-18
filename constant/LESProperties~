@@ -9,52 +9,46 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       volScalarField;
-    location    "0";
-    object      nuTilda;
+    class       dictionary;
+    location    "constant";
+    object      LESProperties;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [ 0 2 -1 0 0 0 0 ];
+LESModel        Smagorinsky;
 
-internalField   uniform 0.05;
+delta           Prandtl;
 
-boundaryField
+printCoeffs     on;
+
+PrandtlCoeffs
 {
-    inlet
+
+    delta         cubeRootVol;
+  
+    cubeRootVolCoeffs
     {
-        type            fixedValue;
-        value           uniform 0.05;
+        deltaCoeff      1;
     }
-    outlet
+
+	/*
+    smoothCoeffs
     {
-        type            inletOutlet;
-        inletValue      uniform 0.05;
-        value           uniform 0.05;
+        delta           cubeRootVol;
+        cubeRootVolCoeffs
+        {
+            deltaCoeff      1;
+        }
+
+        maxDeltaRatio   1.1;
     }
-    lowerWall
-    {
-        type            fixedValue;
-        value           uniform 0;
-    }
-    "motorBike_.*"
-    {
-        type            fixedValue;
-        value           uniform 0;
-    }
-    upperWall
-    {
-        type            symmetryPlane;
-    }
-    frontAndBack
-    {
-        type            symmetryPlane;
-    }
-    "proc.*"
-    {
-        type            processor;
-    }
+    */
+
+    Cdelta          0.158;
+
 }
+
+
 
 
 // ************************************************************************* //
