@@ -1,5 +1,9 @@
 This repository contains an attempt to model the vortex ring created by a moss capsule bursting. This repository contains (so far) three cases. 
 
-	axisymmetric: A 2D domain using wedge boundaries for the front and back to reproduce an axisymmetric case in FLUENT
-	bottomSymmetryPlane: A 2D domain using a symmetry plane at the bottom, so that half of a 2D cross section is simulated
+	axisymmetric: A 2D domain using wedge boundaries for the front and back to 
+		reproduce an axisymmetric case in FLUENT
+	
+	bottomSymmetryPlane: A 2D domain using a symmetry plane at the bottom, 
+		so that half of a 2D cross section is simulated
+	
 	simple2D: A 2D domain simulating a 2D slice of the 3D domain
