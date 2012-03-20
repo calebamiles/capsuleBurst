@@ -20,7 +20,7 @@ startFrom          startTime;
 startTime          0;
 stopAt            endTime;
 endTime            1;
-deltaT            1e-6;
+deltaT            1e-8;
 writeControl      timeStep;
 writeInterval      100;
 purgeWrite        0;
