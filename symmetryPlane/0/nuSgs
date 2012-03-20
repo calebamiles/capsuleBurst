@@ -9,46 +9,53 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       dictionary;
-    location    "constant";
-    object      LESProperties;
+    class       volScalarField;
+    object      nuSgs;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-LESModel        Smagorinsky;
+dimensions      [0 2 -1 0 0 0 0];
 
-delta           Prandtl;
+internalField   uniform 0.0544766;
 
-printCoeffs     on;
-
-PrandtlCoeffs
+boundaryField
 {
 
-    delta         cubeRootVol;
-  
-    cubeRootVolCoeffs
+
+   left
     {
-        deltaCoeff      1;
+        type            nuSgsUSpaldingWallFunction;
+        value           uniform 0.0544766;
     }
 
-	/*
-    smoothCoeffs
+    right
     {
-        delta           cubeRootVol;
-        cubeRootVolCoeffs
-        {
-            deltaCoeff      1;
-        }
-
-        maxDeltaRatio   1.1;
+        type            inletOutlet;
+        inletValue      uniform 0.0544766;
+        value           uniform 0.0544766;
     }
-    */
 
-    Cdelta          0.158;
+    top
+    {
+        type            nuSgsUSpaldingWallFunction;
+        value           uniform 0.0544766;
+    }
 
+    bottom
+    {
+        type            symmetryPlane;
+    }
+
+    capsuleWall
+    {
+        type            nuSgsUSpaldingWallFunction;
+        value           uniform 0.0544766;
+    }
+        
+    frontAndBack
+    {
+        type           empty;
+    }
 }
-
-
-
 
 // ************************************************************************* //

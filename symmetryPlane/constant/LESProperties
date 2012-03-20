@@ -9,44 +9,34 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       polyBoundaryMesh;
-    location    "constant/polyMesh";
-    object      boundary;
+    class       dictionary;
+    location    "constant";
+    object      LESProperties;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-5
-(
-    capsuleWall
+LESModel        Smagorinsky;
+
+delta           Prandtl;
+
+printCoeffs     on;
+
+PrandtlCoeffs
+{
+
+    delta         cubeRootVol;
+  
+    cubeRootVolCoeffs
     {
-        type            wall;
-        nFaces          20;
-        startFace       20580;
+        deltaCoeff      1;
     }
-    left
-    {
-        type            wall;
-        nFaces          60;
-        startFace       20600;
-    }
-    right
-    {
-        type            wall;
-        nFaces          80;
-        startFace       20660;
-    }
-    topAndBottom
-    {
-        type            wall;
-        nFaces          280;
-        startFace       20740;
-    }
-    frontAndBack
-    {
-        type            empty;
-        nFaces          20800;
-        startFace       21020;
-    }
-)
+    
+
+    //Cdelta          0.158;
+
+}
+
+
+
 
 // ************************************************************************* //

@@ -9,46 +9,49 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       volScalarField;
-    object      nuSgs;
+    class       volVectorField;
+    object      U;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 2 -1 0 0 0 0];
+dimensions      [0 1 -1 0 0 0 0];
 
-internalField   uniform 0.0544766;
+internalField   uniform (0 0 0);
 
 boundaryField
 {
-
-
-   left
+    capsuleWall
     {
-        type           symmetryPlane;
+        type            fixedValue;
+        value				$internalField;
+    }
+    
+    left
+    {
+        type            fixedValue;
+        value				$internalField;
     }
 
     right
     {
-        type            inletOutlet;
-        inletValue      uniform 0.0544766;
-        value           uniform 0.0544766;
+        type            fixedValue;
+        value				$internalField;
+    }
+    
+    top
+    {
+        type            fixedValue;
+        value				$internalField;
+    }    
+
+    bottom
+    {
+        type            symmetryPlane;
     }
 
-    topAndBottom
-    {
-        type            nuSgsUSpaldingWallFunction;
-        value           uniform 0.0544766;
-    }
-
-    capsuleWall
-    {
-        type            nuSgsUSpaldingWallFunction;
-        value           uniform 0.0544766;
-    }
-        
     frontAndBack
     {
-        type           empty;
+        type            empty;
     }
 }
 
