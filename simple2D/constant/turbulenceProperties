@@ -8,45 +8,14 @@
 FoamFile
 {
     version     2.0;
-    format      binary;
-    class       polyBoundaryMesh;
-    location    "constant/polyMesh";
-    object      boundary;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      turbulenceProperties;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-5
-(
-    capsuleWall
-    {
-        type            wall;
-        nFaces          20;
-        startFace       20580;
-    }
-    left
-    {
-        type            wall;
-        nFaces          60;
-        startFace       20600;
-    }
-    right
-    {
-        type            wall;
-        nFaces          80;
-        startFace       20660;
-    }
-    topAndBottom
-    {
-        type            wall;
-        nFaces          280;
-        startFace       20740;
-    }
-    frontAndBack
-    {
-        type            empty;
-        nFaces          20800;
-        startFace       21020;
-    }
-)
+simulationType  LESModel;
+
 
 // ************************************************************************* //
