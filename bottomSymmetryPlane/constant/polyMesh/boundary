@@ -20,38 +20,38 @@ FoamFile
     capsuleWall
     {
         type            wall;
-        nFaces          20;
-        startFace       55640;
+        nFaces          10;
+        startFace       27700;
     }
     left
     {
         type            wall;
-        nFaces          100;
-        startFace       55660;
+        nFaces          50;
+        startFace       27710;
     }
     right
     {
         type            wall;
-        nFaces          120;
-        startFace       55760;
+        nFaces          60;
+        startFace       27760;
     }
     top
     {
         type            wall;
         nFaces          240;
-        startFace       55880;
+        startFace       27820;
     }
     bottom
     {
         type            wall;
         nFaces          240;
-        startFace       56120;
+        startFace       28060;
     }
     frontAndBack
     {
         type            empty;
-        nFaces          56000;
-        startFace       56360;
+        nFaces          28000;
+        startFace       28300;
     }
 )
 
